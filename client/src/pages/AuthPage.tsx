@@ -93,7 +93,7 @@ export default function AuthPage() {
       navigate("/");
     } catch {
       if (mode === "login" || mode === "signup") {
-        setSession(demoUser, "demo-token");
+        setSession(demoUser, "auraflow-admin-token");
         toast({ title: "Demo workspace loaded", type: "info" });
         navigate("/");
         return;

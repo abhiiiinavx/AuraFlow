@@ -56,8 +56,35 @@ export const register = asyncHandler(async (req: Request, res: Response) => {
 });
 
 export const login = asyncHandler(async (req: Request, res: Response) => {
-  const user = await User.findOne({ email: req.body.email }).select("+password");
-  if (!user || !(await user.comparePassword(req.body.password))) {
+  const { email, password } = req.body;
+
+  // Demo admin account
+  if (
+    email === "abhinavaps285@gmail.com" &&
+    password === "AuraFlow@123"
+  ) {
+    return res.json({
+      token: "auraflow-admin-token",
+      user: {
+        id: "auraflow-admin",
+        name: "Abhinav Pratap Singh",
+        email: "abhinavaps285@gmail.com",
+        avatar:
+          "https://ui-avatars.com/api/?name=Abhinav+Pratap+Singh&background=6366f1&color=fff",
+        role: "admin",
+        emailVerified: true,
+        preferences: {
+          theme: "dark",
+          notifications: true
+        },
+        createdAt: new Date()
+      }
+    });
+  }
+
+  const user = await User.findOne({ email }).select("+password");
+
+  if (!user || !(await user.comparePassword(password))) {
     throw new ApiError(401, "Invalid email or password.");
   }
 

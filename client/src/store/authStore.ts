@@ -18,7 +18,7 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       setSession: (user, token) => set({ user, token }),
-      loginDemo: () => set({ user: demoUser, token: "demo-token" }),
+      loginDemo: () => set({ user: demoUser, token: "auraflow-admin-token" }),
       updateUser: (user) =>
         set((state) => ({
           user: state.user ? { ...state.user, ...user } : null

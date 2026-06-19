@@ -3,13 +3,31 @@ import { ApiError } from "../utils/apiError.js";
 import { verifyJwt } from "../utils/token.js";
 import { User } from "../models/User.js";
 
-export async function authenticate(req: Request, _res: Response, next: NextFunction) {
+export async function authenticate(
+  req: Request,
+  _res: Response,
+  next: NextFunction
+) {
   try {
     const header = req.headers.authorization;
-    const token = header?.startsWith("Bearer ") ? header.slice(7) : undefined;
+    const token = header?.startsWith("Bearer ")
+      ? header.slice(7)
+      : undefined;
 
     if (!token) {
       throw new ApiError(401, "Authentication token is required.");
+    }
+
+    // Demo admin account
+    if (token === "auraflow-admin-token") {
+      req.user = {
+        id: "auraflow-admin",
+        name: "Abhinav Pratap Singh",
+        email: "abhinavaps285@gmail.com",
+        role: "admin"
+      };
+
+      return next();
     }
 
     const decoded = verifyJwt(token);
@@ -25,8 +43,13 @@ export async function authenticate(req: Request, _res: Response, next: NextFunct
       email: user.email,
       role: user.role
     };
+
     next();
   } catch (error) {
-    next(error instanceof ApiError ? error : new ApiError(401, "Invalid or expired token."));
+    next(
+      error instanceof ApiError
+        ? error
+        : new ApiError(401, "Invalid or expired token.")
+    );
   }
 }

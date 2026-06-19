@@ -12,7 +12,7 @@ export async function apiFetch<T>(path: string, options: ApiOptions = {}): Promi
   const token = useAuthStore.getState().token;
   const headers = new Headers(options.headers);
   headers.set("Content-Type", headers.get("Content-Type") ?? "application/json");
-  if (options.auth !== false && token && token !== "demo-token") {
+  if (options.auth !== false && token && token !== "auraflow-admin-token") {
     headers.set("Authorization", `Bearer ${token}`);
   }
 
@@ -32,7 +32,7 @@ export async function apiFetch<T>(path: string, options: ApiOptions = {}): Promi
 export async function apiBlob(path: string) {
   const token = useAuthStore.getState().token;
   const headers = new Headers();
-  if (token && token !== "demo-token") headers.set("Authorization", `Bearer ${token}`);
+  if (token && token !== "auraflow-admin-token") headers.set("Authorization", `Bearer ${token}`);
   const response = await fetch(`${API_URL}${path}`, { headers });
   if (!response.ok) throw new Error(response.statusText);
   return response.blob();

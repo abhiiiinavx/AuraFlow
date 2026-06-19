@@ -5,7 +5,7 @@ let socket: Socket | null = null;
 
 export function getSocket() {
   const token = useAuthStore.getState().token;
-  if (!token || token === "demo-token") return null;
+  if (!token || token === "auraflow-admin-token") return null;
 
   if (!socket) {
     socket = io(import.meta.env.VITE_SOCKET_URL ?? window.location.origin, {

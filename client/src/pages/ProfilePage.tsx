@@ -68,7 +68,7 @@ export default function ProfilePage() {
   const uploadAvatar = async (file?: File) => {
     if (!file) return;
     setAvatarPreview(URL.createObjectURL(file));
-    if (!token || token === "demo-token") {
+    if (!token || token === "auraflow-admin-token") {
       toast({ title: "Avatar preview updated", type: "info" });
       return;
     }
