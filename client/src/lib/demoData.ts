@@ -5,8 +5,8 @@ const today = new Date();
 
 export const demoUser: User = {
   id: "demo-user",
-  name: "Avery Stone",
-  email: "avery@aura.local",
+  name: "ABHINAV PRATAP SINGH",
+  email: "abhinavaps285@gmail.com",
   avatar: "",
   role: "user",
   emailVerified: true,

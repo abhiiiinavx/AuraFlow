@@ -1,6 +1,8 @@
 import { useAuthStore } from "@/store/authStore";
 
-export const API_URL = import.meta.env.VITE_API_URL ?? "/api";
+export const API_URL =
+  import.meta.env.VITE_API_URL ??
+  "https://auraflow-api-ck2v.onrender.com/api";
 
 type ApiOptions = RequestInit & {
   auth?: boolean;

@@ -178,7 +178,7 @@ export default function AuthPage() {
               {mode === "signup" && (
                 <label className="block space-y-2">
                   <span className="text-sm font-medium">Name</span>
-                  <Input placeholder="Avery Stone" {...register("name")} />
+                  <Input placeholder="ABHINAV PRATAP SINGH" {...register("name")} />
                   {errors.name && <span className="text-xs text-destructive">{errors.name.message}</span>}
                 </label>
               )}
@@ -186,7 +186,7 @@ export default function AuthPage() {
               {(mode === "login" || mode === "signup" || mode === "forgot") && (
                 <label className="block space-y-2">
                   <span className="text-sm font-medium">Email</span>
-                  <Input placeholder="you@example.com" type="email" {...register("email")} />
+                  <Input placeholder="abhinavaps285@gmail.com" type="email" {...register("email")} />
                   {errors.email && <span className="text-xs text-destructive">{errors.email.message}</span>}
                 </label>
               )}

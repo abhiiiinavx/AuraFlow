@@ -134,7 +134,7 @@ export default function DashboardPage() {
               <Sparkles className="h-4 w-4 text-primary" />
               AI summary
             </div>
-            <h1 className="text-balance text-3xl font-semibold sm:text-4xl">Welcome back, Avery.</h1>
+            <h1 className="text-balance text-3xl font-semibold sm:text-4xl">Welcome back, ABHINAV.</h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{data.aiSummary}</p>
           </div>
           <div className="rounded-lg border border-border/70 bg-background/60 p-4">

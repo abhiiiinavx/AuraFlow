@@ -1,89 +1,252 @@
-# Aura Task Suite
+# AuraFlow
 
-An advanced AI-powered task management application built with React, TypeScript, Tailwind CSS, Express, MongoDB, JWT auth, Socket.IO, Recharts, Zustand, TanStack Query, Zod, and AI provider integrations.
+An advanced AI-powered task management application built with React, TypeScript, Tailwind CSS, Express, Socket.IO, Zustand, TanStack Query, Recharts, Zod, and AI integrations.
 
-## Quick Start
+## Live Demo
+
+### Frontend
+
+https://aura-flow-client.vercel.app
+
+### Backend API
+
+https://auraflow-api-ck2v.onrender.com
+
+### Repository
+
+https://github.com/abhiiiinavx/AuraFlow
+
+---
+
+## Features
+
+* JWT Authentication
+* Task CRUD
+* Analytics Dashboard
+* Notifications
+* AI Task Generation
+* Priority Detection
+* Smart Scheduling
+* Profile Management
+* Socket.IO Support
+* Responsive UI
+* Dark Mode
+* Charts and Productivity Metrics
+* Demo Data Fallback
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* React
+* TypeScript
+* Tailwind CSS
+* Zustand
+* TanStack Query
+* Recharts
+* Socket.IO Client
+* Framer Motion
+
+### Backend
+
+* Node.js
+* Express
+* TypeScript
+* Socket.IO
+* JWT Authentication
+* Zod Validation
+* OpenAI / Gemini Support
+
+---
+
+## Local Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/abhiiiinavx/AuraFlow.git
+cd AuraFlow
+```
+
+Install dependencies:
 
 ```bash
 npm install
+```
+
+Run:
+
+```bash
 npm run dev
 ```
 
-The client runs on `http://localhost:5173` and the API runs on `http://localhost:8080`.
+Frontend:
 
-The frontend includes resilient demo data so the interface remains usable before a MongoDB connection is configured. For production behavior, configure the server environment variables in `server/.env`.
+```
+http://localhost:5173
+```
 
-## Environment
+Backend:
 
-Copy `server/.env.example` to `server/.env`.
+```
+http://localhost:8080
+```
+
+---
+
+## Environment Variables
+
+### Client (.env)
 
 ```env
-PORT=8080
-CLIENT_URL=http://localhost:5173
-MONGO_URI=mongodb+srv://user:password@cluster.mongodb.net/aura-task-suite
-JWT_SECRET=replace-with-a-long-random-secret
-JWT_EXPIRES_IN=7d
-EMAIL_FROM=Aura Task Suite <noreply@example.com>
-SMTP_HOST=
-SMTP_PORT=587
-SMTP_USER=
-SMTP_PASS=
-OPENAI_API_KEY=
-GEMINI_API_KEY=
+VITE_API_URL=https://auraflow-api-ck2v.onrender.com/api
+VITE_SOCKET_URL=https://auraflow-api-ck2v.onrender.com
+```
+
+### Server (.env)
+
+```env
+PORT=10000
+CLIENT_URL=https://aura-flow-client.vercel.app
+JWT_SECRET=your-secret-key
 AI_PROVIDER=mock
 ```
 
+Optional:
+
+```env
+MONGO_URI=
+OPENAI_API_KEY=
+GEMINI_API_KEY=
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASS=
+```
+
+---
+
 ## API Overview
 
-Base URL: `/api`
+Base URL:
+
+```
+/api
+```
 
 ### Auth
 
-- `POST /auth/register` - create an account.
-- `POST /auth/login` - login and receive a JWT.
-- `POST /auth/forgot-password` - request a reset token.
-- `POST /auth/reset-password` - reset a password.
-- `POST /auth/verify-email` - verify an email token.
-- `GET /auth/me` - fetch the current user.
-- `POST /auth/logout` - logout endpoint for clients.
+* POST /auth/register
+* POST /auth/login
+* POST /auth/me
+* POST /auth/logout
 
 ### Tasks
 
-- `GET /tasks` - list tasks with `search`, `status`, `priority`, `sort`, `page`, and `limit`.
-- `POST /tasks` - create a task.
-- `PATCH /tasks/:id` - update a task.
-- `DELETE /tasks/:id` - delete a task.
-- `PATCH /tasks/:id/archive` - archive a task.
-- `PATCH /tasks/:id/restore` - restore a task.
-- `GET /tasks/export/csv` - export tasks as CSV.
-- `GET /tasks/export/pdf` - export tasks as a lightweight PDF-ready JSON payload.
+* GET /tasks
+* POST /tasks
+* PATCH /tasks/:id
+* DELETE /tasks/:id
+* PATCH /tasks/:id/archive
+* PATCH /tasks/:id/restore
+* GET /tasks/export/csv
+* GET /tasks/export/pdf
 
-### Analytics, Notifications, AI, Profile
+### Analytics
 
-- `GET /analytics/summary` - productivity metrics and chart data.
-- `GET /notifications` - list in-app notifications.
-- `PATCH /notifications/:id/read` - mark a notification as read.
-- `POST /ai/generate-tasks` - turn plain text into tasks.
-- `POST /ai/detect-priority` - infer a priority.
-- `POST /ai/schedule` - suggest a due date.
-- `POST /ai/next-task` - recommend next work.
-- `POST /ai/summarize` - summarize completed work.
-- `GET /users/profile` - current profile.
-- `PATCH /users/profile` - update profile details.
-- `POST /users/avatar` - upload an avatar.
+* GET /analytics/summary
+
+### Notifications
+
+* GET /notifications
+* PATCH /notifications/:id/read
+
+### AI
+
+* POST /ai/generate-tasks
+* POST /ai/detect-priority
+* POST /ai/schedule
+* POST /ai/next-task
+* POST /ai/summarize
+
+### Users
+
+* GET /users/profile
+* PATCH /users/profile
+* POST /users/avatar
+
+---
 
 ## Deployment
 
-Frontend deploy target: Vercel.
+### Frontend (Vercel)
 
-- Build command: `npm run build --workspace client`
-- Output directory: `client/dist`
-- Required env: `VITE_API_URL=https://your-render-api.onrender.com/api`
+Build Command:
 
-Backend deploy target: Render.
+```bash
+npm run build --workspace client
+```
 
-- Build command: `npm install && npm run build --workspace server`
-- Start command: `npm run start --workspace server`
-- Required env: `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL`, and optional AI/email variables.
+Output Directory:
 
-Database target: MongoDB Atlas.
+```text
+client/dist
+```
+
+Environment Variables:
+
+```env
+VITE_API_URL=https://auraflow-api-ck2v.onrender.com/api
+VITE_SOCKET_URL=https://auraflow-api-ck2v.onrender.com
+```
+
+---
+
+### Backend (Render)
+
+Build Command:
+
+```bash
+npm install && npm run build --workspace server
+```
+
+Start Command:
+
+```bash
+npm run start --workspace server
+```
+
+Environment Variables:
+
+```env
+PORT=10000
+CLIENT_URL=https://aura-flow-client.vercel.app
+JWT_SECRET=your-secret-key
+```
+
+---
+
+## Future Enhancements
+
+* MongoDB Atlas Integration
+* Real-time Collaboration
+* Kanban Board
+* Calendar View
+* Pomodoro Timer
+* AI Productivity Assistant
+* Email Notifications
+* Team Workspaces
+
+---
+
+## Author
+
+**Abhinav Pratap Singh**
+
+GitHub:
+https://github.com/abhiiiinavx
+
+LinkedIn:
+https://www.linkedin.com/

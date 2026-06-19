@@ -6,20 +6,23 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src")
-    }
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
   server: {
     port: 5173,
     proxy: {
       "/api": {
-        target: "http://localhost:8080",
-        changeOrigin: true
+        target: "https://auraflow-api-ck2v.onrender.com",
+        changeOrigin: true,
+        secure: true,
       },
       "/socket.io": {
-        target: "http://localhost:8080",
-        ws: true
-      }
-    }
-  }
+        target: "https://auraflow-api-ck2v.onrender.com",
+        ws: true,
+        changeOrigin: true,
+        secure: true,
+      },
+    },
+  },
 });
