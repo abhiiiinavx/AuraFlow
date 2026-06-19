@@ -1,0 +1,17 @@
+{
+  "name": "Aura Task Suite",
+  "short_name": "Aura",
+  "description": "AI-powered task management workspace.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
